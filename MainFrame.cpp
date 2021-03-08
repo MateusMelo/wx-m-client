@@ -60,35 +60,39 @@ MainFrame::MainFrame() : wxFrame(nullptr, wxID_ANY, "Title") {
     text_ctrl_bottom->SetBackgroundColour(wxColour(23, 18, 36));
     text_ctrl_bottom->SetForegroundColour(wxColour(255,255,255));
 
-    wxDialog* dialog = new wxDialog(this, wxID_ANY, "Connections", wxDefaultPosition, wxDefaultSize);
+    wxDialog* dialog = new wxDialog(this, wxID_ANY, "Connections", wxDefaultPosition, wxSize(500, 250), wxRESIZE_BORDER | wxCLOSE_BOX);
     dialog->Show();
 
     
     wxNotebook* notebook = new wxNotebook(dialog, wxID_ANY, wxDefaultPosition, wxDefaultSize);
     
     wxPanel *connection_panel = new wxPanel(notebook);
-    connection_panel->SetBackgroundColour(wxColour(23, 18, 36));
-    connection_panel->SetForegroundColour(wxColour(255,255,255));
-
     wxPanel *authentication_panel = new wxPanel(notebook);
-    authentication_panel->SetBackgroundColour(wxColour(23, 18, 36));
-    authentication_panel->SetForegroundColour(wxColour(255,255,255));
     
     notebook->AddPage(connection_panel, "Connection", true);
     notebook->AddPage(authentication_panel, "Authentication");
 
-    wxStaticText* connection_name_label = new wxStaticText(connection_panel, wxID_ANY, "Name", wxDefaultPosition, wxDefaultSize);
-    connection_name_label->SetForegroundColour(wxColour(255,255,255));
+    wxBoxSizer* connection_panel_main_sizer = new wxBoxSizer(wxVERTICAL);
+
+    wxStaticText* connection_name_label = new wxStaticText(connection_panel, wxID_ANY, "Name: ", wxDefaultPosition, wxDefaultSize);
     wxTextCtrl* connection_name_input = new wxTextCtrl(connection_panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize);
 
-    wxBoxSizer* connection_panel_main_sizer = new wxBoxSizer(wxVERTICAL);
     wxBoxSizer* connection_panel_sizer = new wxBoxSizer(wxHORIZONTAL);
-    connection_panel_sizer->Add(connection_name_label, 0, wxALL, 5);
-    connection_panel_sizer->Add(connection_name_input, 0, wxALL, 5);
+    connection_panel_sizer->Add(connection_name_label, 0, wxRIGHT, 8);
+    connection_panel_sizer->Add(connection_name_input, 1);
 
     connection_panel_main_sizer->Add(connection_panel_sizer, 0, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 10);
 
-    connection_panel->SetSizer(connection_panel_sizer);
+    wxStaticText* connection_address_label = new wxStaticText(connection_panel, wxID_ANY, "Address: ", wxDefaultPosition, wxDefaultSize);
+    wxTextCtrl* connection_address_input = new wxTextCtrl(connection_panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize);
+
+    wxBoxSizer* connection_panel_sizer_2 = new wxBoxSizer(wxHORIZONTAL);
+    connection_panel_sizer_2->Add(connection_address_label, 0);
+    connection_panel_sizer_2->Add(connection_address_input, 1);
+
+    connection_panel_main_sizer->Add(connection_panel_sizer_2, 0, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 10);
+
+    connection_panel->SetSizer(connection_panel_main_sizer);
 }
 
 void MainFrame::OnExit(wxCommandEvent &event) {
