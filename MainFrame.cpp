@@ -41,6 +41,10 @@ MainFrame::MainFrame() : wxFrame(nullptr, wxID_ANY, "Title") {
     tree_ctrl->AppendItem(root_id, "node_4");
     tree_ctrl->AppendItem(root_id, "node_5");
     tree_ctrl->AppendItem(root_id, "node_6");
+    tree_ctrl->AppendItem(root_id, "node_7");
+    tree_ctrl->AppendItem(root_id, "node_8");
+    tree_ctrl->AppendItem(root_id, "node_9");
+    tree_ctrl->AppendItem(root_id, "node_10");
 
     tree_ctrl->ExpandAll();
 

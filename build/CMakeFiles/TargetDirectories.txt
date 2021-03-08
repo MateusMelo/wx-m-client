@@ -1,3 +1,0 @@
-/home/m2/projects/wx-m-client/build/CMakeFiles/rebuild_cache.dir
-/home/m2/projects/wx-m-client/build/CMakeFiles/edit_cache.dir
-/home/m2/projects/wx-m-client/build/CMakeFiles/wx_m_client.dir
